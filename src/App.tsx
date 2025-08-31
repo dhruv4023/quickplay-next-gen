@@ -1,27 +1,35 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import { useEffect, useMemo } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import { setClearOnUnload } from "./state/slices/authSlice"; 
+import { themeSettings } from "./utils/theme";
+import { AlertProvider } from "./utils/Alert";
+import { AllRoutes } from "./navigation_componets/AllRoutes";
+// `import ServerErrorDialog from "./utils/ServerErrorDialog";
 
-const queryClient = new QueryClient();
+const App = () => {
+  const mode = useSelector((s: { mode: "light" | "dark" }) => s.mode);
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const dispatch = useDispatch();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  useEffect(() => {
+    window.addEventListener("beforeunload", () => {
+      dispatch(setClearOnUnload());
+    });
+  }, [dispatch]);
+  return (
+    <AlertProvider>
+      <Router>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <AllRoutes />
+          {/* <ServerErrorDialog /> */}
+        </ThemeProvider>
+      </Router>
+    </AlertProvider>
+  );
+};
 
 export default App;
