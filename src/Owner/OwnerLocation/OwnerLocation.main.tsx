@@ -1,4 +1,4 @@
-import { Box, Button, Typography, Grid, useTheme } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import WidgetsOnPage from "../../components/Containers/WidgetsOnPage";
 import { RootState } from "../../state/store";
 import { useSelector, useDispatch } from "react-redux";
@@ -77,12 +77,12 @@ const OwnerLocation = () => {
               </Button>
             </FlexBetween>
 
-            <Grid container spacing={2} sx={{ mt: 2 }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mt: 2 }}>
               {locationsState.length > 0 ? (
                 locationsState.map((location) => (
-                  <Grid item xs={12} sm={6} md={4} key={location._id}>
+                  <Box key={location._id} sx={{ flex: '1 1 300px', minWidth: '300px', maxWidth: '400px' }}>
                     <LocationCardView location={location} />
-                  </Grid>
+                  </Box>
                 ))
               ) : (
                 !loading && (
@@ -94,7 +94,7 @@ const OwnerLocation = () => {
                   </Typography>
                 )
               )}
-            </Grid>
+            </Box>
           </Box>
         }
       />

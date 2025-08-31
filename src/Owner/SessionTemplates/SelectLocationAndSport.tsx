@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Select, MenuItem, FormControl, InputLabel, Typography } from '@mui/material'
 import { isApiResponse } from '../../schemas/Response.schema'
 import { SessionTemplate } from '../../schemas/SessionTemplate/SessionTemplate'
@@ -28,16 +28,18 @@ const SelectLocationAndSport = ({ isEdit, data, setData }: Props) => {
   const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(null)
 
   const getLocationSports = async () => {
-    const response = await getLocationSortsApi(token)
+    if (!token) return;
+    
+    const response = await getLocationSortsApi(token);
     if (isApiResponse(response)) {
-      const mapped = response.data?.map((location: any) => ({
+      const mapped = (response.data as any[])?.map((location: any) => ({
         id: location.locationId,
         name: location.locationName,
-        sports: location.sport.map((s: any) => ({
+        sports: location.sport?.map((s: any) => ({
           id: s.id,
           name: s.name,
-        })),
-      }))
+        })) || [],
+      })) || []
       setLocations(mapped)
 
       if (data.locationId) {

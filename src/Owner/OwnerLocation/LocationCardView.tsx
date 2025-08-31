@@ -5,7 +5,6 @@ import {
   Typography,
   Chip,
   Stack,
-  IconButton,
 } from '@mui/material';
 import { Location } from '../../schemas/Location/OwnerLocation.schema';
 import { useTheme } from '@mui/material/styles';

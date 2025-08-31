@@ -37,7 +37,7 @@ const CourtsTemplate = ({ isEdit, data, setData }: Props) => {
         if (field === 'numberOfCourt' || field === 'price') {
             value = Number(value);
         }
-        updated[index][field] = value;
+        (updated[index] as any)[field] = value;
         setCourts(updated);
     };
 

@@ -1,5 +1,5 @@
 import WidgetsOnPage from "../../components/Containers/WidgetsOnPage";
-import { Typography, Button, Grid, Box } from "@mui/material";
+import { Typography, Button, Box } from "@mui/material";
 import { isApiResponse } from "../../schemas/Response.schema";
 import { useCallback, useEffect, useState } from "react";
 import { getAllSessionTemplatesApi, createSessionTemplateApi, updateSessionTemplateApi, deleteSessionTemplateApi } from "./session.template";
@@ -15,7 +15,7 @@ import Loading from "../../components/Loading/Loading";
 const OwnerSessionTemplates = () => {
   const [sessionTemplates, setSessionTemplates] = useState<SessionTemplate[]>([]);
   const [openEdit, setOpenEdit] = useState<string | null>(null);
-  const [openDelete, setOpenDelete] = useState(false);
+  // const [openDelete, setOpenDelete] = useState(false);
   const [loading, setLoading] = useState(false);
   const { showAlert } = useAlert();
   const token = useSelector((state: RootState) => state.auth.token);
@@ -65,7 +65,7 @@ const OwnerSessionTemplates = () => {
         if (isApiResponse(response)) {
           showAlert(response.message, "success");
           setSessionTemplates(sessionTemplates.filter((template) => template._id !== templateId));
-          setOpenDelete(false);
+          // setOpenDelete(false);
         } else {
           showAlert(response.message, "error");
         }
@@ -78,7 +78,7 @@ const OwnerSessionTemplates = () => {
   };
 
   const onCreateNewTemplate = () => {
-    setSessionTemplates([...sessionTemplates, {
+    const newTemplate: any = {
       _id: "NEW",
       sportId: "",
       templateName: "",
@@ -87,7 +87,9 @@ const OwnerSessionTemplates = () => {
       startTime: "",
       endTime: "",
       frequency: "",
-    }]);
+      locationId: ""
+    };
+    setSessionTemplates([...sessionTemplates, newTemplate]);
     setOpenEdit("NEW");
   };
 
@@ -113,9 +115,9 @@ const OwnerSessionTemplates = () => {
             </Button>
           </FlexBetween>
           {sessionTemplates && (sessionTemplates.length > 0 && (
-            <Grid container spacing={2} sx={{ mt: 2 }}>
-              {sessionTemplates.map((template, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mt: 2 }}>
+              {sessionTemplates.map((template) => (
+                <Box key={template._id} sx={{ flex: '1 1 300px', minWidth: '300px', maxWidth: '400px' }}>
                   <EditSessionTemplate
                     openEdit={openEdit}
                     key={template._id}
@@ -124,9 +126,9 @@ const OwnerSessionTemplates = () => {
                     setOpenEdit={setOpenEdit}
                     onDelete={handleDelete}
                   />
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           ))}
         </Box>
       }

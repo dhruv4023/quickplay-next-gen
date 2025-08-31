@@ -1,5 +1,5 @@
 import { useTheme } from "@mui/material";
-import { Box, Container, Typography, Grid, Paper, Avatar, Card } from "@mui/material";
+import { Box, Container, Typography, Paper, Avatar, Card } from "@mui/material";
 import { SportsEsports, EmojiEvents, Groups, TrendingUp } from "@mui/icons-material";
 import WidgetsOnPage from "../../components/Containers/WidgetsOnPage";
 import { useEffect } from "react";
@@ -88,39 +88,38 @@ const Home = () => {
 
           {/* Stats Section */}
           <FlexEvenly sx={{ my: 2 }}>
-            <Grid container spacing={4}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center' }}>
               {stats.map((stat, index) => (
-                <Grid item xs={6} md={3} key={index}>
-                  <Paper
-                    elevation={3}
+                <Paper
+                  key={index}
+                  elevation={3}
+                  sx={{
+                    width: '10rem',
+                    p: 3,
+                    textAlign: 'center',
+                    borderRadius: '15px'
+                  }}
+                >
+                  <Avatar
                     sx={{
-                      width: '10rem',
-                      p: 3,
-                      textAlign: 'center',
-                      borderRadius: '15px'
+                      bgcolor: theme.palette.primary.main,
+                      width: 56,
+                      height: 56,
+                      mb: 2,
+                      mx: 'auto'
                     }}
                   >
-                    <Avatar
-                      sx={{
-                        bgcolor: theme.palette.primary.main,
-                        width: 56,
-                        height: 56,
-                        mb: 2,
-                        mx: 'auto'
-                      }}
-                    >
-                      {stat.icon}
-                    </Avatar>
-                    <Typography variant="h4" fontWeight="bold" color="primary">
-                      {stat.value}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {stat.label}
-                    </Typography>
-                  </Paper>
-                </Grid>
+                    {stat.icon}
+                  </Avatar>
+                  <Typography variant="h4" fontWeight="bold" color="primary">
+                    {stat.value}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {stat.label}
+                  </Typography>
+                </Paper>
               ))}
-            </Grid>
+            </Box>
           </FlexEvenly>
 {/* Features Section */}
 <FlexEvenly flexDirection="column" sx={{ m: 8 }} alignItems="center">
@@ -137,48 +136,47 @@ const Home = () => {
     Powerful Tools for Your Success
   </Typography>
 
-  <Grid container spacing={4} justifyContent="center" sx={{ maxWidth: '1200px' }}>
+  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center', maxWidth: '1200px' }}>
     {features.map((feature, index) => (
-      <Grid item xs={12} md={6} lg={3} key={index}>
-        <Card
-          elevation={2}
+      <Card
+        key={index}
+        elevation={2}
+        sx={{
+          p: 4,
+          width: '30rem',
+          height: '100%',
+          borderRadius: '20px',
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            transform: 'translateY(-10px)',
+            boxShadow: '0 12px 20px rgba(0,0,0,0.1)'
+          }
+        }}
+      >
+        <Avatar
           sx={{
-            p: 4,
-            width: '30rem',
-            height: '100%',
-            borderRadius: '20px',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              transform: 'translateY(-10px)',
-              boxShadow: '0 12px 20px rgba(0,0,0,0.1)'
-            }
+            bgcolor: theme.palette.primary.main,
+            width: 60,
+            height: 60,
+            mb: 3
           }}
         >
-          <Avatar
-            sx={{
-              bgcolor: theme.palette.primary.main,
-              width: 60,
-              height: 60,
-              mb: 3
-            }}
-          >
-            {feature.icon}
-          </Avatar>
-          <Typography
-            variant="h6"
-            gutterBottom
-            fontWeight="bold"
-            color="primary"
-          >
-            {feature.title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {feature.description}
-          </Typography>
-        </Card>
-      </Grid>
+          {feature.icon}
+        </Avatar>
+        <Typography
+          variant="h6"
+          gutterBottom
+          fontWeight="bold"
+          color="primary"
+        >
+          {feature.title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {feature.description}
+        </Typography>
+      </Card>
     ))}
-  </Grid>
+  </Box>
 </FlexEvenly>
 
         </Box>
