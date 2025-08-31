@@ -91,8 +91,8 @@ const HomePage = () => {
           }}>
             Features
           </Typography>
-          <Grid container spacing={4} sx={{ mt: 2 }}>
-            <Grid item xs={12} md={6}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, mt: 2 }}>
+            <Box sx={{ flex: '1 1 45%', minWidth: '300px' }}>
               <Paper elevation={3} sx={{ 
                 p: 4, 
                 height: '100%',
@@ -116,8 +116,8 @@ const HomePage = () => {
                   - Set custom tags and filters
                 </Typography>
               </Paper>
-            </Grid>
-            <Grid item xs={12} md={6}>
+            </Box>
+            <Box sx={{ flex: '1 1 45%', minWidth: '300px' }}>
               <Paper elevation={3} sx={{ 
                 p: 4, 
                 height: '100%',
@@ -141,8 +141,8 @@ const HomePage = () => {
                   - Share achievements and milestones
                 </Typography>
               </Paper>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </Container>
 
         {/* About Us Section */}
@@ -181,8 +181,8 @@ const HomePage = () => {
               Our platform combines powerful organization tools with social features to create a comprehensive 
               gaming ecosystem.
             </Typography>
-            <Grid container spacing={4}>
-              <Grid item xs={12} md={4}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
+              <Box sx={{ flex: '1 1 300px', maxWidth: '400px' }}>
                 <Paper elevation={3} sx={{ 
                   p: 4, 
                   textAlign: 'center',
@@ -199,8 +199,8 @@ const HomePage = () => {
                     To provide gamers with the best tools to organize, track, and share their gaming journey.
                   </Typography>
                 </Paper>
-              </Grid>
-              <Grid item xs={12} md={4}>
+              </Box>
+              <Box sx={{ flex: '1 1 300px', maxWidth: '400px' }}>
                 <Paper elevation={3} sx={{ 
                   p: 4, 
                   textAlign: 'center',
@@ -217,8 +217,8 @@ const HomePage = () => {
                     To create a global community where gamers can connect and share their passion.
                   </Typography>
                 </Paper>
-              </Grid>
-              <Grid item xs={12} md={4}>
+              </Box>
+              <Box sx={{ flex: '1 1 300px', maxWidth: '400px' }}>
                 <Paper elevation={3} sx={{ 
                   p: 4, 
                   textAlign: 'center',
@@ -235,8 +235,8 @@ const HomePage = () => {
                     Innovation, Community, and Passion for Gaming.
                   </Typography>
                 </Paper>
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
           </Container>
         </Box>
 
@@ -260,8 +260,8 @@ const HomePage = () => {
           }}>
             Contact Us
           </Typography>
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={6}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+            <Box sx={{ flex: '1 1 45%', minWidth: '300px' }}>
               <Paper elevation={3} sx={{ 
                 p: 4,
                 borderRadius: '15px',
@@ -281,8 +281,8 @@ const HomePage = () => {
                   <Typography>123 Gaming Street, Virtual City</Typography>
                 </Box>
               </Paper>
-            </Grid>
-            <Grid item xs={12} md={6}>
+            </Box>
+            <Box sx={{ flex: '1 1 45%', minWidth: '300px' }}>
               <Paper elevation={3} sx={{ 
                 p: 4,
                 borderRadius: '15px',
@@ -345,8 +345,8 @@ const HomePage = () => {
                   </Button>
                 </Box>
               </Paper>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </Container>
 
         {/* Footer */}
@@ -366,14 +366,14 @@ const HomePage = () => {
           }
         }}>
           <Container>
-            <Grid container spacing={4}>
-              <Grid item xs={12} md={4}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+              <Box sx={{ flex: '1 1 300px' }}>
                 <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>Quick Play</Typography>
                 <Typography variant="body2" sx={{ opacity: 0.8 }}>
                   Your ultimate gaming companion for managing and sharing your gaming experiences.
                 </Typography>
-              </Grid>
-              <Grid item xs={12} md={4}>
+              </Box>
+              <Box sx={{ flex: '1 1 300px' }}>
                 <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>Quick Links</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                   <Link href="#" color="inherit" sx={{ mb: 1, '&:hover': { opacity: 0.8 } }}>Home</Link>
@@ -381,8 +381,8 @@ const HomePage = () => {
                   <Link href="#" color="inherit" sx={{ mb: 1, '&:hover': { opacity: 0.8 } }}>About Us</Link>
                   <Link href="#" color="inherit" sx={{ '&:hover': { opacity: 0.8 } }}>Contact</Link>
                 </Box>
-              </Grid>
-              <Grid item xs={12} md={4}>
+              </Box>
+              <Box sx={{ flex: '1 1 300px' }}>
                 <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>Follow Us</Typography>
                 <Box>
                   <IconButton color="inherit" sx={{ '&:hover': { transform: 'scale(1.1)' } }}>
@@ -398,8 +398,8 @@ const HomePage = () => {
                     <LinkedIn />
                   </IconButton>
                 </Box>
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
             <Box sx={{ mt: 4, textAlign: 'center' }}>
               <Typography variant="body2" sx={{ opacity: 0.8 }}>
                 © {new Date().getFullYear()} Quick Play. All rights reserved.

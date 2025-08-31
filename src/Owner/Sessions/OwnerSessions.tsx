@@ -1,12 +1,10 @@
 import WidgetsOnPage from "../../components/Containers/WidgetsOnPage";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/material";
-import { ErrorResponse } from "../../schemas/Response.schema";
-import { ApiResponse } from "../../schemas/Response.schema";
 
-const isApiResponse = (response: ApiResponse | ErrorResponse): response is ApiResponse => {
-  return response.success;
-};
+// const isApiResponse = (response: ApiResponse | ErrorResponse): response is ApiResponse => {
+//   return response.success;
+// };
 
 const OwnerSessions = () => {
   return (

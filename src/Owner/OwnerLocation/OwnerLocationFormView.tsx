@@ -9,7 +9,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import Grid from '@mui/material/Grid';
+
 import { ArrowBack, Cancel, Delete, Edit, MapRounded } from "@mui/icons-material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloudDoneIcon from "@mui/icons-material/CloudDone";
@@ -204,59 +204,78 @@ const OwnerLocationFormView = () => {
               </Typography>
 
               {/* Address Fields */}
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                <Box sx={{ flex: '1 1 45%', minWidth: '200px' }}>
                   <EditableData
                     fieldName="area"
                     data={location}
                     setData={setLocation}
                     isEdit={isEdit}
                   />
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </Box>
+                <Box sx={{ flex: '1 1 45%', minWidth: '200px' }}>
                   <EditableData
                     fieldName="addressLine1"
                     data={location}
                     setData={setLocation}
                     isEdit={isEdit}
                   />
-                </Grid>
-                <Grid item xs={12}>
+                </Box>
+                <Box sx={{ flex: '1 1 100%' }}>
                   <EditableData
                     fieldName="addressLine2"
                     data={location}
                     setData={setLocation}
                     isEdit={isEdit}
                   />
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </Box>
+                <Box sx={{ flex: '1 1 45%', minWidth: '200px' }}>
                   <EditableData
                     fieldName="city"
                     data={location}
                     setData={setLocation}
                     isEdit={isEdit}
                   />
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </Box>
+                <Box sx={{ flex: '1 1 45%', minWidth: '200px' }}>
                   <EditableData
                     fieldName="state"
                     data={location}
                     setData={setLocation}
                     isEdit={isEdit}
                   />
-                </Grid>
-                {isEdit ?
+                </Box>
+                <Box sx={{ flex: '1 1 45%', minWidth: '200px' }}>
                   <EditableData
-                    fieldName="mapLink"
+                    fieldName="pincode"
                     data={location}
                     setData={setLocation}
                     isEdit={isEdit}
                   />
-                  : <Button onClick={() => window.open(location.mapLink, "_blank")}>
-                    View on Google Map <MapRounded />
-                  </Button>}
-              </Grid>
+                </Box>
+              </Box>
+              {isEdit ? (
+                <EditableData
+                  fieldName="mapLink"
+                  data={location}
+                  setData={setLocation}
+                  isEdit={isEdit}
+                />
+              ) : (
+                <Button onClick={() => window.open(location.mapLink, "_blank")}>
+                  View on Google Map <MapRounded />
+                </Button>
+              )}
             </Stack>
+          </FlexBetween>
+
+          <FlexBetween
+            sx={{
+              p: 3,
+              backgroundColor: theme.palette.background.paper,
+              borderRadius: 2,
+            }}
+          >
             <FlexEvenlyColumn>
               {/* Available Sports Section */}
               <Typography variant="h6" fontWeight="bold" sx={{ color: theme.palette.primary.dark }}>
@@ -313,7 +332,7 @@ const OwnerLocationFormView = () => {
                 <ImageComponent
                   key={index}
                   size="10rem"
-                  src={img}
+                  image={img}
                   sx={{
                     borderRadius: 1,
                     objectFit: "cover",
