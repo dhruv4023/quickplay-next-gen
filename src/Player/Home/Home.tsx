@@ -1,5 +1,5 @@
 import WidgetsOnPage from "../../components/Containers/WidgetsOnPage";
-import { Box, Paper, Typography, Grid, Button, Container, useTheme, Card, Avatar, Divider } from "@mui/material";
+import { Box, Paper, Typography, Button, Container, useTheme, Card, Avatar } from "@mui/material";
 import { SportsEsports, Group, EmojiEvents, Speed, Star, TrendingUp, Gamepad, PersonAdd } from "@mui/icons-material";
 import { keyframes } from '@mui/system';
 
@@ -101,9 +101,9 @@ const Home = () => {
 
           {/* Stats Section */}
           <Container maxWidth="lg" sx={{ mb: 8 }}>
-            <Grid container spacing={4}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center' }}>
               {stats.map((stat, index) => (
-                <Grid item xs={6} md={3} key={index}>
+                <Box key={index} sx={{ flex: '1 1 200px', maxWidth: '300px' }}>
                   <Paper 
                     elevation={0}
                     sx={{ 
@@ -134,9 +134,9 @@ const Home = () => {
                       {stat.label}
                     </Typography>
                   </Paper>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </Container>
 
           {/* Features Section */}
@@ -153,9 +153,9 @@ const Home = () => {
             >
               Why Choose Quick Play?
             </Typography>
-            <Grid container spacing={4}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
               {features.map((feature, index) => (
-                <Grid item xs={12} md={6} lg={3} key={index}>
+                <Box key={index} sx={{ flex: '1 1 250px', maxWidth: '300px' }}>
                   <Card 
                     elevation={4}
                     sx={{ 
@@ -206,9 +206,9 @@ const Home = () => {
                       {feature.description}
                     </Typography>
                   </Card>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </Container>
 
           {/* Call to Action */}
