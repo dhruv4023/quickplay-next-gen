@@ -1,6 +1,5 @@
-import { Box, Grid, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
-import { RootState } from "../../state/store";
+import { Box, Typography } from "@mui/material";
+import WidgetsOnPage from "../../components/Containers/WidgetsOnPage";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import ViewModuleIcon from "@mui/icons-material/ViewModule";
 import EventIcon from "@mui/icons-material/Event";
@@ -54,7 +53,7 @@ const StatCard = ({ title, value, Icon, color, delay }: StatCardProps) => (
 );
 
 export const DashBoard = () => {
-  const owner = useSelector((state: RootState) => state.auth.owner);
+  // const owner = useSelector((state: RootState) => state.auth.owner);
 
   // Replace with actual backend data
   const totalLocations = 5;

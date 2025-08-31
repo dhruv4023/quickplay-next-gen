@@ -69,5 +69,4 @@ const WidgetsOnPage: React.FC<WidgetsOnPageProps> = ({
   );
 };
 
-
-4
+export default WidgetsOnPage;
